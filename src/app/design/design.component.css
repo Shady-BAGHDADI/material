@@ -1,0 +1,4 @@
+/* use id or . add-alert  class or use id => specific icon */
+mat-icon#add_alert {
+  color: purple;
+}

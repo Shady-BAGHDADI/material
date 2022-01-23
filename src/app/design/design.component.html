@@ -1,0 +1,132 @@
+<h2>CheckBox</h2>
+
+<mat-checkbox
+  #showDetails
+  class="example-margin"
+  [checked]="isChecked"
+  [value]=""
+  (change)="onChange($event)"
+  >Checked</mat-checkbox
+>
+<div *ngIf="showDetails.checked">show details...</div>
+<h2>DRADIO BUTTON</h2>
+<mat-radio-group value="1">
+  <mat-radio-button class="example-radio-button" value="1">
+    Male
+  </mat-radio-button>
+  <mat-radio-button class="example-radio-button" value="2">
+    Female
+  </mat-radio-button>
+  <!-- [checked]="isChecked" -->
+</mat-radio-group>
+
+<h2>DROP DOWN LISTS</h2>
+<mat-form-field>
+  <mat-label>Cars</mat-label>
+  <mat-select [(ngModel)]="color">
+    <mat-option *ngFor="let c of colors" [value]="c.id">{{
+      c.name
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<h2>INPUT</h2>
+
+<mat-form-field class="example-full-width">
+  <input
+    matInput
+    placeholder="Favorite color"
+    ngModel
+    #col="ngModel"
+    name="color"
+    required
+  />
+  <mat-hint>Type a unique color .</mat-hint>
+  <span matSuffix>@color.com</span>
+  <span matPrefix>color.</span>
+  <mat-error *ngIf="col.invalid && col.errors.required">
+    The color field is required .
+  </mat-error>
+</mat-form-field>
+
+<h2>TEXT AREA</h2>
+<mat-form-field>
+  <textarea matInput cdkTextareaAutosize placeholder="Textarea"></textarea>
+</mat-form-field>
+<h2>DATA PICKER</h2>
+<mat-form-field>
+  <input
+    [min]="minDate"
+    [max]="maxDate"
+    (focus)="birthdate.open()"
+    matInput
+    [matDatepicker]="birthdate"
+    placeholder="Choose a date"
+  />
+  <mat-datepicker-toggle matSuffix [for]="birthdate"></mat-datepicker-toggle>
+  <mat-datepicker #birthdate touchUi="true"></mat-datepicker>
+</mat-form-field>
+
+<h2>ICONS</h2>
+<mat-icon>favorite_border</mat-icon>
+<!-- replace espace by _  else we have 2 icons -->
+<!-- 
+!!! change color : use css OR use custom theme
+
+-->
+<mat-icon id="add_alert">add_alert</mat-icon>
+<h2>BUTTONS</h2>
+
+<!-- !!! by default the background color of  button  = background of theme -->
+<!-- button like text-->
+<button mat-button>Add</button>
+<!-- button..we can change bg color with 3 options : primary accent warn -->
+<button mat-raised-button color="primary">primary</button>
+<p>exemple :</p>
+
+<button mat-raised-button color="accent">Accent</button>
+<button mat-raised-button color="warn">Warn</button>
+<button mat-raised-button disabled>Disabled</button>
+<a mat-raised-button routerLink=".">Link</a>
+<button mat-fab color="accent"><mat-icon>check</mat-icon></button>
+<h2>CHIPS</h2>
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip
+    *ngFor="let c of categories"
+    (click)="selectCategory(c)"
+    [selected]="c.selected"
+    >{{ c.name }}
+  </mat-chip>
+</mat-chip-list>
+<h2>PROGRESS SPINNER</h2>
+<!-- 
+import file :  to 100 % mode : determinate you can add value="20"
+
+-->
+<mat-progress-spinner mode="determinate" [value]="progress">
+</mat-progress-spinner>
+<!-- while waiting  for  API from the server // without value -->
+<mat-progress-spinner *ngIf="isLoading" mode="indeterminate">
+</mat-progress-spinner>
+<h2>Tooltips</h2>
+<span matTooltip="Here is my tooltips" matTooltipPosition="right"
+  >Some Text ...
+</span>
+<button
+  mat-raised-button
+  matTooltip="Info about the action"
+  aria-label="Button that displays a tooltip when focused or hovered over"
+>
+  Action
+</button>
+
+<h2>TABS</h2>
+<mat-tab-group>
+  <mat-tab label="First"> Content 1 </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>
+
+<h2>DIALOGS</h2>
+
+<button mat-raised-button (click)="openDialog()">Open Dialog</button>
